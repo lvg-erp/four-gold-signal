@@ -11,7 +11,7 @@ services:
       - ../:/workspace
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
-      - 8100:8080
+      - "8100:8080"
     networks:
       - default
 
@@ -24,7 +24,7 @@ services:
     command:
       - --config.file=/etc/prometheus/prometheus.yml
     ports:
-      - 9090:9090
+      - "9090:9090"
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
@@ -37,7 +37,7 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 3000:3000
+      - "3100:3000"
     volumes:
       - ./grafana:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
@@ -63,7 +63,7 @@ services:
       - --collector.filesystem.ignored-mount-points
       - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
     ports:
-      - 9100:9100
+      - "9100:9100"
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
